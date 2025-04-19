@@ -23,8 +23,5 @@ namespace YumBlazor.Data
 
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
-
-
-
     }
 }
