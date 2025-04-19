@@ -104,6 +104,8 @@ else
 
     private int _selectedCategoryId = 0;
     private string _searchText = "";
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -113,15 +115,12 @@ else
             StateHasChanged();
         }
     }
-
     private async Task LoadProducts()
     {
         Products = await _productRepository.GetAllAsync();
         Categories = await _categoryRepository.GetAllAsync();
         FilterProducts(0);
     }
-
-
     private void FilterProducts(int categoryId)
     {
         if (categoryId == 0)
@@ -137,7 +136,6 @@ else
             _searchText = String.Empty;
         }
     }
-
     private void FilterProductByName(string newValueOfSearchText)
     {
         if (string.IsNullOrWhiteSpace(newValueOfSearchText))
@@ -155,9 +153,6 @@ else
     {
         return categoryId == _selectedCategoryId ? "active" : string.Empty;
     }
-
-
-
     private async Task AddOrderItem(Product product)
     {
         var authState = await _AuthenticationStateProvider.GetAuthenticationStateAsync();
